@@ -43,8 +43,8 @@ angular.module('ui.tinymce', [])
             }
           } else {
             ensureInstance();
-
-            if (tinyInstance && !tinyInstance.settings.readonly && tinyInstance.getDoc()) {
+            const readonly = tinyInstance.settings? tinyInstance.settings.readonly: tinyInstance.readonly;
+            if (tinyInstance && !readonly && tinyInstance.getDoc()) {
               tinyInstance.getBody().setAttribute('contenteditable', true);
             }
           }
